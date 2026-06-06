@@ -16,6 +16,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 *.log
+*.tmp
+*.bak
+*.old
+*.patch
+frontend-auth-dashboard.png
+BankTaxAccounting_Submit/
 
 *.tsbuildinfo
 .DS_Store

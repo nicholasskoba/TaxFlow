@@ -4,7 +4,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "TaxFlow",
-  description: "Финансовый контроль доходов, налогов и чистого результата"
+  description: "Финансовый контроль доходов, налогов и чистого результата",
+  icons: {
+    icon: "/favicon.svg"
+  }
 };
 
 export default function RootLayout({
