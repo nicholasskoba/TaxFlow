@@ -3,8 +3,8 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bank Tax Accounting",
-  description: "Веб-приложение для учета доходов и расчета налоговых обязательств"
+  title: "TaxFlow",
+  description: "Финансовый контроль доходов, налогов и чистого результата"
 };
 
 export default function RootLayout({

@@ -1,0 +1,440 @@
+{
+  "info": {
+    "name": "Bank Tax Accounting API",
+    "description": "Postman collection for checking auth, incomes, tax calculations, reports and dashboard endpoints. Authentication uses the Postman cookie jar after login because JWT is stored in the httpOnly token cookie.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001/api"
+    },
+    {
+      "key": "categoryId",
+      "value": ""
+    },
+    {
+      "key": "incomeId",
+      "value": ""
+    },
+    {
+      "key": "taxRuleId",
+      "value": ""
+    },
+    {
+      "key": "userId",
+      "value": ""
+    },
+    {
+      "key": "auditLogId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"new.user@banktax.local\",\n  \"password\": \"password123\",\n  \"fullName\": \"New User\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/register"
+          }
+        },
+        {
+          "name": "Login user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@banktax.local\",\n  \"password\": \"user123\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Login admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@banktax.local\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Me",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/auth/me"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/logout"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin - Users",
+      "item": [
+        {
+          "name": "Admin - Get users",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users?search=&role="
+          }
+        },
+        {
+          "name": "Admin - Get user by id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users/{{userId}}"
+          }
+        },
+        {
+          "name": "Admin - Update user role/name",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Updated User Name\",\n  \"role\": \"USER\"\n}"
+            },
+            "url": "{{baseUrl}}/users/{{userId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Income Categories",
+      "item": [
+        {
+          "name": "Get income categories",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/income-categories"
+          }
+        },
+        {
+          "name": "Create income category admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Demo Category\",\n  \"description\": \"Created from Postman\",\n  \"incomeType\": \"OTHER\"\n}"
+            },
+            "url": "{{baseUrl}}/income-categories"
+          }
+        },
+        {
+          "name": "Admin - Update income category",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Demo Category Updated\",\n  \"description\": \"Updated from Postman\",\n  \"incomeType\": \"OTHER\"\n}"
+            },
+            "url": "{{baseUrl}}/income-categories/{{categoryId}}"
+          }
+        },
+        {
+          "name": "Admin - Delete income category",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/income-categories/{{categoryId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Incomes",
+      "item": [
+        {
+          "name": "Get incomes",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/incomes"
+          }
+        },
+        {
+          "name": "Create income",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categoryId\": \"{{categoryId}}\",\n  \"amount\": \"150000\",\n  \"receivedAt\": \"2026-05-20\",\n  \"description\": \"Postman income\"\n}"
+            },
+            "url": "{{baseUrl}}/incomes"
+          }
+        },
+        {
+          "name": "Update income",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Updated from Postman\"\n}"
+            },
+            "url": "{{baseUrl}}/incomes/{{incomeId}}"
+          }
+        },
+        {
+          "name": "Delete income",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/incomes/{{incomeId}}"
+          }
+        },
+        {
+          "name": "Get income summary",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/incomes/summary"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tax Rules",
+      "item": [
+        {
+          "name": "Get tax rules",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tax-rules"
+          }
+        },
+        {
+          "name": "Create tax rule admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Postman fixed rule\",\n  \"rate\": \"10\",\n  \"incomeType\": \"OTHER\",\n  \"ruleType\": \"FIXED\",\n  \"isActive\": true\n}"
+            },
+            "url": "{{baseUrl}}/tax-rules"
+          }
+        },
+        {
+          "name": "Create progressive tax rule admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Postman progressive rule\",\n  \"rate\": \"10\",\n  \"incomeType\": \"SALARY\",\n  \"ruleType\": \"PROGRESSIVE\",\n  \"threshold\": \"36762500\",\n  \"extraRate\": \"15\",\n  \"isActive\": true\n}"
+            },
+            "url": "{{baseUrl}}/tax-rules"
+          }
+        },
+        {
+          "name": "Get my tax rules",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/my-tax-rules"
+          }
+        },
+        {
+          "name": "Create my custom tax rule",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My custom salary rule\",\n  \"rate\": \"8\",\n  \"incomeType\": \"SALARY\",\n  \"ruleType\": \"FIXED\",\n  \"isActive\": true\n}"
+            },
+            "url": "{{baseUrl}}/my-tax-rules"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tax Calculations",
+      "item": [
+        {
+          "name": "Calculate tax auto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incomeId\": \"{{incomeId}}\"\n}"
+            },
+            "url": "{{baseUrl}}/tax-calculations/calculate-auto"
+          }
+        },
+        {
+          "name": "Get tax calculation history",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tax-calculations"
+          }
+        },
+        {
+          "name": "Get tax calculation summary",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tax-calculations/summary"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Monthly report",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/reports/monthly?year=2026&month=5"
+          }
+        },
+        {
+          "name": "Yearly report",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/reports/yearly?year=2026"
+          }
+        },
+        {
+          "name": "Period report",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/reports/period?dateFrom=2026-05-01&dateTo=2026-05-31"
+          }
+        },
+        {
+          "name": "Monthly report CSV export",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/reports/monthly/export?year=2026&month=5"
+          }
+        },
+        {
+          "name": "Yearly report CSV export",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/reports/yearly/export?year=2026"
+          }
+        },
+        {
+          "name": "Period report CSV export",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/reports/period/export?dateFrom=2026-05-01&dateTo=2026-05-31"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard summary",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/dashboard/summary"
+      }
+    },
+    {
+      "name": "Admin - Audit Logs",
+      "item": [
+        {
+          "name": "Admin - Get audit logs",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/audit-logs?limit=50"
+          }
+        },
+        {
+          "name": "Admin - Get audit log by id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/audit-logs/{{auditLogId}}"
+          }
+        }
+      ]
+    }
+  ]
+}

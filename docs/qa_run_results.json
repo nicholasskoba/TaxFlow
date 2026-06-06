@@ -1,0 +1,218 @@
+﻿{
+    "date":  "2026-05-21T21:04:32.135Z",
+    "results":  [
+                    {
+                        "scenario":  "Public: home page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Public: login page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Public: register page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Access: dashboard without login redirects",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Access: dashboard redirected to login",
+                        "result":  "WARN",
+                        "notes":  "Bank Tax Accounting\nВход\n\nВойдите в личный кабинет для работы с доходами и налог"
+                    },
+                    {
+                        "scenario":  "User login",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "User: dashboard",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "User: incomes list",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "User: create income page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "User: create test income",
+                        "result":  "PASS",
+                        "notes":  "status 201"
+                    },
+                    {
+                        "scenario":  "User: edit test income",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "User: income filters page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "User: income filters API",
+                        "result":  "PASS",
+                        "notes":  "search filter checked through API"
+                    },
+                    {
+                        "scenario":  "User: automatic tax page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "User: automatic tax calculation",
+                        "result":  "PASS",
+                        "notes":  "status 201"
+                    },
+                    {
+                        "scenario":  "User: tax history",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "User: delete test tax calculation",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "User: reports page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "User: monthly report API",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "User: yearly report API",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "User: period report API",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "User: delete test income",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "Access: USER opens admin users page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Access: USER sees no access",
+                        "result":  "PASS",
+                        "notes":  "No access message is visible on /admin/users for USER"
+                    },
+                    {
+                        "scenario":  "Access: USER admin API forbidden",
+                        "result":  "PASS",
+                        "notes":  "status 403"
+                    },
+                    {
+                        "scenario":  "User logout",
+                        "result":  "PASS",
+                        "notes":  "logout API called"
+                    },
+                    {
+                        "scenario":  "Admin login",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "Admin: admin home",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Admin: users page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Admin: update user fullName",
+                        "result":  "PASS",
+                        "notes":  "statuses 200/200"
+                    },
+                    {
+                        "scenario":  "Admin: cannot demote last admin",
+                        "result":  "PASS",
+                        "notes":  "status 400"
+                    },
+                    {
+                        "scenario":  "Admin: categories page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Admin: category create/edit/delete",
+                        "result":  "PASS",
+                        "notes":  "statuses 201/200/200"
+                    },
+                    {
+                        "scenario":  "Admin: cannot delete used category",
+                        "result":  "PASS",
+                        "notes":  "status 400"
+                    },
+                    {
+                        "scenario":  "Admin: tax rules page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Admin: tax rule create/edit/delete",
+                        "result":  "PASS",
+                        "notes":  "statuses 201/200/200"
+                    },
+                    {
+                        "scenario":  "Admin: audit logs page",
+                        "result":  "PASS",
+                        "notes":  "Bank Tax Accounting"
+                    },
+                    {
+                        "scenario":  "Admin: audit logs API",
+                        "result":  "PASS",
+                        "notes":  "count 37"
+                    },
+                    {
+                        "scenario":  "Admin: audit logs filters",
+                        "result":  "PASS",
+                        "notes":  "status 200"
+                    },
+                    {
+                        "scenario":  "Swagger UI",
+                        "result":  "PASS",
+                        "notes":  "Swagger UI"
+                    },
+                    {
+                        "scenario":  "Swagger loads",
+                        "result":  "PASS",
+                        "notes":  "Swagger page opened"
+                    },
+                    {
+                        "scenario":  "Admin logout",
+                        "result":  "PASS",
+                        "notes":  "logout API called"
+                    }
+                ],
+    "issues":  [
+
+               ]
+}
