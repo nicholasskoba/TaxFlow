@@ -6,12 +6,14 @@ import { createValidationError } from "../utils/validation";
 
 const TOKEN_COOKIE_NAME = "token";
 const TOKEN_MAX_AGE = 7 * 24 * 60 * 60 * 1000;
+const isProduction = process.env.NODE_ENV === "production";
 
 const tokenCookieOptions: CookieOptions = {
   httpOnly: true,
-  sameSite: "lax",
-  secure: process.env.NODE_ENV === "production",
-  maxAge: TOKEN_MAX_AGE
+  sameSite: isProduction ? "none" : "lax",
+  secure: isProduction,
+  maxAge: TOKEN_MAX_AGE,
+  path: "/"
 };
 
 export const register: RequestHandler = async (req, res, next) => {
@@ -51,7 +53,7 @@ export const login: RequestHandler = async (req, res, next) => {
 export const logout: RequestHandler = (_req, res) => {
   res.clearCookie(TOKEN_COOKIE_NAME, {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: isProduction ? "none" : "lax",
     secure: process.env.NODE_ENV === "production"
   });
 
